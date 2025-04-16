@@ -1,0 +1,16 @@
+Open your php.ini file.
+
+C:\xampp\php\php.ini
+
+Search for these lines:
+;extension=gd
+;extension=zip
+
+Remove the ; at the beginning of both lines to enable them:
+extension=gd
+extension=zip
+
+Save the file and restart Apache from XAMPP.
+
+composers sould be there in folder then only
+composer require phpoffice/phpspreadsheet

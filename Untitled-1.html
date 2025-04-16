@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Placement Portal Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f6f9;
+            color: #333;
+            margin: 0;
+            padding-top: 60px;
+        }
+        #sidebar {
+            background-color: #2d3e50;
+            min-height: 100vh;
+            padding-top: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 250px;
+            z-index: 1000;
+            transition: transform 0.3s;
+            transform: translateX(-250px);
+            overflow-y: auto;
+        }
+        #sidebar.show {
+            transform: translateX(0);
+        }
+        #sidebar .nav-link {
+            color: #fff;
+            padding: 10px 20px;
+            transition: background-color 0.3s;
+        }
+        #sidebar .nav-link:hover {
+            background-color: #1e2a37;
+            text-decoration: none;
+        }
+        .collapse-menu {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 0;
+        }
+        .collapse-menu li a {
+            padding-left: 40px;
+        }
+        .collapse.show {
+            margin-bottom: 10px;
+        }
+        nav.navbar {
+            background-color: #27293d;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1050;
+        }
+        nav .nav-link, nav .navbar-brand {
+            color: white;
+        }
+        nav .nav-link:hover {
+            color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <div id="sidebar">
+        <ul class="nav flex-column">
+            <li class="nav-item"><a href="dashboard.php" class="nav-link">Home</a></li>
+            <li class="nav-item">
+                <a class="nav-link dropdown-toggle register-link d-flex align-items-center justify-content-between" data-bs-toggle="collapse" href="#registerMenu" role="button" aria-expanded="false" aria-controls="registerMenu">
+                    <span>Register</span>
+                </a>
+                <div class="collapse" id="registerMenu">
+                    <ul class="collapse-menu">
+                        <li><a href="register.php" class="nav-link">Register Manually</a></li>
+                        <li><a href="upload_excel.php" class="nav-link">Upload Excel</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="nav-item"><a href="view_students.php" class="nav-link">View Students</a></li>
+            <li class="nav-item"><a href="view_applications.php" class="nav-link">View Applications</a></li>
+            <li class="nav-item"><a href="add_company.php" class="nav-link">Add Company</a></li>
+            <li class="nav-item"><a href="view_companies.php" class="nav-link">View Companies</a></li>
+            <li class="nav-item"><a href="add_job_posts.php" class="nav-link">Add Job Posts</a></li>
+            <li class="nav-item"><a href="view_job_posts.php" class="nav-link">Edit Job Posts</a></li>
+            <li class="nav-item"><a href="../index.php" class="nav-link">Logout</a></li>
+        </ul>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <span class="navbar-brand" onclick="toggleSidebar()">☰ Menu</span>
+            <div class="ms-auto d-flex align-items-center">
+                <div class="nav-item me-4">
+                    <a class="nav-link" href="#"><i class="fas fa-bell"></i> Notifications</a>
+                </div>
+                <div class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="profileDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-user"></i> Profile
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="view_profile.php?user_id=<?php echo $user_id; ?>">View Profile</a></li>
+                        <li><a class="dropdown-item" href="update_profile.php?user_id=<?php echo $user_id; ?>">Update Profile</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById('sidebar');
+            sidebar.classList.toggle('show');
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
